@@ -1,4 +1,3 @@
-# this app can write windows11 iso to usb flash on mac os
 import os
 
 
@@ -23,7 +22,7 @@ if agree != 'y':
     print('Operation not permitted')
     exit()
 
-erase = run(f'diskutil eraseDisk MS-DOS WININST MBR {DEVICE}')
+run(f'diskutil eraseDisk MS-DOS WININST MBR {DEVICE}')
 mount_iso = run(f'hdiutil mount {WINDOWS_ISO_PATH}')
 _, mount_iso_path = mount_iso.replace('\n', '').split('/Volumes/')
 
@@ -41,4 +40,3 @@ print('Unmounting iso')
 run(f'umount /Volumes/{mount_iso_path}')
 
 print('Done')
-
